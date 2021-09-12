@@ -1,6 +1,6 @@
 #Subnet Calculator
 
-def net_addr(ip,sub):
+def ntwrk_addr(ip,sub):
 	subnet = 32
 	mask = sub
 	lst = []
@@ -21,7 +21,7 @@ def net_addr(ip,sub):
 		network.append(ip[j] & netd[j])
 	return network
 
-def broad_addr(ip,sub):
+def brd_addr(ip,sub):
 	subnet = 32
 	mask = sub
 	lst = []
@@ -42,7 +42,7 @@ def broad_addr(ip,sub):
 		broad.append(ip[j] | bro[j])
 	return broad
 
-def available_host(ip,sub):
+def avail_host(ip,sub):
 	subnet = 32
 	mask = 32 - sub
 	no_of_avail_ip_addr= pow(2, mask)

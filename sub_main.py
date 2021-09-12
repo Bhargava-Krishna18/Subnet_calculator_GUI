@@ -22,23 +22,23 @@ def clear():
 	rang.set('')
 	
 
-def cal():
+def calci():
 	ip_addr = [int(x) for x in ip.get().split(".")]
 	sub = subnet.get()
-	network_addr = net_addr(ip_addr,sub)
+	ntwrk_addr = net_addr(ip_addr,sub)
 	lst = []
 	lst1 = []
-	for i in network_addr:
+	for i in n_addr:
 		lst.append(str(i))
 	netw.set(".".join(lst))
-	broadcast_addr = broad_addr(ip_addr,sub)
+	broadcast_addr = brd_addr(ip_addr,sub)
 	for i in broadcast_addr:
 		lst1.append(str(i))
 	brod.set(".".join(lst1))
-	no_avail,host_ip = available_host(ip_addr,sub)
+	no_avail,host_ip = avail_host(ip_addr,sub)
 	avail_host.set(f"Available: {no_avail} Actual avail: {host_ip}")
-	network_addr[3] = int(network_addr[3]) + 1
-	start_range = ".".join(map(str, network_addr))
+	network_addr[3] = int(ntwrk_addr[3]) + 1
+	start_range = ".".join(map(str, ntwrk_addr))
 	broadcast_addr[3] = int(broadcast_addr[3]) - 1
 	end_range = ".".join(map(str, broadcast_addr))
 	rang.set(f"{start_range}  '-'  {end_range}")
@@ -54,7 +54,7 @@ subnetfield = tk.Entry(win, textvariable=subnet)
 subnetfield.grid(row=1, column=1)
 
 
-tk.Button(win,text="Calculate",command = cal).grid(row=3,column=0)
+tk.Button(win,text="Calculate",command = calci).grid(row=3,column=0)
 tk.Button(win,text="Clear",command = clear).grid(row=3,column=1)
 
 tk.Label(win,text = "Network Address").grid(row=5,column=0)
